@@ -39,10 +39,10 @@ function addNumbers(num1, num2) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
+function makePersonObject(id, name, email) {
+  return { id, name, email };
 }
-
+console.log(makePersonObject(5, 'Leia', 'leia@leia.com'));
 /**
  * ### Challenge `getName`
  * 
@@ -56,10 +56,10 @@ function makePersonObject(/* code here */) {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
-  /* code here */
+function getName(id, name, email) {
+  return `Hello, my name is ${name}`;
 }
-
+console.log(getName(5, 'Leia', 'leia@leia.com'));
 /**
  * ### Challenge `makeSmartPerson`
  * 
@@ -73,15 +73,20 @@ function getName(/* code here */) {
  *         and returns a string like `Hello, my name is {name}`.
  *         where `{name}` is the name passed into `makeSmartPerson`.
 */
-function makeSmartPerson(/* code here */) {
-  /* code here */
+function makeSmartPerson(name) {
+  return {
+    name: name,
+    sum: function(num1, num2) { return num1 + num2; },
+    speak: function() { return `Hello, my name is ${name}`; }
+  };
 }
 
+console.log(makeSmartPerson());
 
 
 
 
-/*
+
 // ⭐️ Example Test Data ⭐️
 
 var inventory = [
@@ -101,7 +106,6 @@ var inventory = [
   { id: 14, car_make: "Dodge", car_model: "Ram Van 1500", car_year: 1999 }
   /// ... Truncated
 ]
-*/
 /**
   * ### Example Array Challenge:
   * 
@@ -136,8 +140,13 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  const carFind = inventory.find((item, index) => {
+    return index === index
+  })
+  return `This is a ${carFind.car_make} ${carFind.car_model}`
 }
+
+console.log(getCarInfoByIndex(inventory,0));
 
 /**
  * ### Challenge `getLastCarInfo`
