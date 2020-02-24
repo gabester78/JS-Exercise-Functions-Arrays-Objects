@@ -159,10 +159,11 @@ console.log(getCarInfoByIndex(inventory,0));
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+function getLastCarInfo(inventory) {
+  var last = inventory[inventory.length -1];
+  return `This is a ${last.car_make} ${last.car_model}`
 }
-
+console.log(getLastCarInfo(inventory));
 /**
  * ### Challenge `getCarInfoById`
  * 
@@ -175,9 +176,14 @@ function getLastCarInfo(/* code here */) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(inventory,id) {
+  for (let i = 0; i < inventory.length; i++) {
+    if (inventory[i].id === id) {
+      return `This is a ${inventory[i].car_make} ${inventory[i].car_model}`;
+    }
+  }
 }
+console.log(getCarInfoById(inventory,1));
 
 /**
  * ### Challenge `sortCarInventory`
@@ -187,10 +193,21 @@ function getCarInfoById(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
-function sortCarInventory(/* code here */) {
-  /* code here */
+function sortCarInventory(inventory) {
+  function compare(a, b) {
+    const bandA = a.car_model.toUpperCase();
+    const bandB = b.car_model.toUpperCase();
+  
+    let comparison = 0;
+    if (bandA > bandB) {
+      comparison = 1;
+    } else if (bandA < bandB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
 }
-
+console.log(sortCarInventory());
 /**
  * ### Challenge `getModelYears`
  * 
