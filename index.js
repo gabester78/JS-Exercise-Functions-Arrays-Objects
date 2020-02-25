@@ -56,10 +56,18 @@ console.log(makePersonObject(5, 'Leia', 'leia@leia.com'));
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(id, name, email) {
-  return `Hello, my name is ${name}`;
+
+var info = [{ id: 1, name: 'Leia', email: 'email@gmail.com'}]
+
+function getName(object){
+  return `Hello, my name is ${object.name}`;
 }
-console.log(getName(5, 'Leia', 'leia@leia.com'));
+    // var object = {id, name, email };
+    // return `Hello, my name is ${object.name}`;
+    // }
+
+console.log(getName(info));
+
 /**
  * ### Challenge `makeSmartPerson`
  * 
@@ -81,7 +89,7 @@ function makeSmartPerson(name) {
   };
 }
 
-console.log(makeSmartPerson());
+console.log(makeSmartPerson('John'));
 
 
 
@@ -236,16 +244,16 @@ console.log(getModelYears(inventory));
  * in the same order as they appear in the original inventory.
 */
 function getOlderCars(inventory,year) {
-  let getOlderCars =[];
+  let olderCars =[];
   for (let i=0; i < inventory.length; i++){
     if (inventory[i].car_year <= year){
-    getOlderCars.push(inventory[i])
+    olderCars.push(inventory[i])
     }
   }
-  return getOlderCars;
+  return olderCars;
 }
 
-console.log(getOlderCars(inventory,'1995'));
+console.log(getOlderCars(inventory,1995));
 
 /**
  * ### Challenge `getGermanCars`
@@ -258,10 +266,20 @@ console.log(getOlderCars(inventory,'1995'));
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
-}
+function getGermanCars(inventory) {
+  let germanCars = [];
+  for(let i = 0; i < inventory.length; i++) {
+    if(inventory[i].car_make === 'Audi' || 
+    inventory[i].car_make === 'Mercedes-Benz' ||
+    inventory[i].car_make === 'Volkswagen' ||
+    inventory[i].car_make === 'BMW') {
+    germanCars.push(inventory[i]);
+      }
+    }
+    return germanCars;
+    }
 
+console.log(getGermanCars(inventory));
 /**
  * ### Challenge refactor to arrow functions
  * 
@@ -280,9 +298,9 @@ function getGermanCars(/* code here */) {
  *   return num * 2
  * }
 */
-const sum = null; // code here!
-const addFive = null; // code here!
-const argTimesTwo = null; // code here!
+const sum = (a, b) => { return a+b };
+const addFive = (num) => { return num+5 };
+const argTimesTwo = (num) => { return num*2 };
 
 /**
  * ### Challenge `carMaker`
